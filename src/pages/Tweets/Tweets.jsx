@@ -26,14 +26,14 @@ import Card from 'components/Card';
      "followers": 64,
      "id": "3"
     },
-    {
-     "createdAt": "2023-06-01T07:20:16.044Z",
-     "user": "Ms. Tommy Konopelski",
-     "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1120.jpg",
-     "tweets": 88,
-     "followers": 69,
-     "id": "4"
-    },
+//     {
+//      "createdAt": "2023-06-01T07:20:16.044Z",
+//      "user": "Ms. Tommy Konopelski",
+//      "avatar": "https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/1120.jpg",
+//      "tweets": 88,
+//      "followers": 69,
+//      "id": "4"
+//     },
     {
      "createdAt": "2023-06-01T06:46:47.514Z",
      "user": "Roberto Larkin",
