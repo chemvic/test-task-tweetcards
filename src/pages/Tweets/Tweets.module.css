@@ -1,0 +1,14 @@
+.users{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.container {
+    max-width: 1200px;
+     margin: 0 auto;
+     padding: 0 30px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     background-color: #766A92;
+   };
