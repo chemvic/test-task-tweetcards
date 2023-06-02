@@ -8,7 +8,7 @@ import App from './components/App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename="/test-task-cards">
+    <BrowserRouter basename="/test-task-tweetcards">
      <App /> 
     </BrowserRouter>
     
