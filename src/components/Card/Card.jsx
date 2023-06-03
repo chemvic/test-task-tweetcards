@@ -13,7 +13,7 @@ import css from './Card.module.css';
     }) => {
         const dispatch=useDispatch();
         const isFollowed=useSelector((state) => state.follow[id]);
-       
+    
         const handleClick = () => {
             dispatch(toggleFollow(id));
           };

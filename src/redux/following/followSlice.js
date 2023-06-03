@@ -10,7 +10,7 @@ const followSlice= createSlice({
     initialState,
     reducers:{
         toggleFollow(state,action){
-            // state.isFollowed=!state.isFollowed;
+
             const userId = action.payload;
             state[userId] = !state[userId];
         },

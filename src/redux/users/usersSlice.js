@@ -23,7 +23,7 @@ const usersSlice = createSlice({
       .addCase(fetchUsers.pending, handlePending)
       .addCase(fetchUsers.fulfilled, (state, action)=>{
         state.isLoading=false;
-        state.items=action.payload;
+        state.items=[...state.items,...action.payload];
         state.error=null;
       })
       .addCase(updateUser.rejected, handleRejected)
