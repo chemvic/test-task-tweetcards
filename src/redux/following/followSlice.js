@@ -9,8 +9,10 @@ const followSlice= createSlice({
     name: 'follow',
     initialState,
     reducers:{
-        toggleFollow(state){
-            state.isFollowed=!state.isFollowed;
+        toggleFollow(state,action){
+            // state.isFollowed=!state.isFollowed;
+            const userId = action.payload;
+            state[userId] = !state[userId];
         },
     },
 });

@@ -12,10 +12,10 @@ import css from './Card.module.css';
     tweets,
     }) => {
         const dispatch=useDispatch();
-        const isFollowed=useSelector(selectIsFollowed);
+        const isFollowed=useSelector((state) => state.follow[id]);
        
         const handleClick = () => {
-            dispatch(toggleFollow());
+            dispatch(toggleFollow(id));
           };
         
     return (
