@@ -1,4 +1,7 @@
 import PropTypes from 'prop-types';
+import {toggleFollow} from 'redux/following/followSlice';
+import {selectIsFollowed} from 'redux/following/selectors';
+import { useSelector, useDispatch  } from 'react-redux';
 import css from './Card.module.css';
 
  const Card = ({
@@ -8,7 +11,13 @@ import css from './Card.module.css';
     followers,
     tweets,
     }) => {
-  
+        const dispatch=useDispatch();
+        const isFollowed=useSelector(selectIsFollowed);
+       
+        const handleClick = () => {
+            dispatch(toggleFollow());
+          };
+        
     return (
         <div className={css.card}>
  
@@ -19,7 +28,9 @@ import css from './Card.module.css';
     />
     <p className={css.name}>{tweets} tweets</p>
     <p className={css.followers}>{followers} followers</p>
-    <button className='button'>follow</button>
+    <button className='button' onClick={handleClick} style={{ backgroundColor: isFollowed ? 'green' : 'gray' }}>
+        {isFollowed ? 'Following' : 'Follow'}
+      </button>
 
 </div>
     );
