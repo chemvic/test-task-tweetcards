@@ -19,6 +19,10 @@ const followPersistConfig = {
     key: 'follow',
     storage,
 };
+const usersPersistConfig = {
+    key: 'users',
+    storage,
+};
 const currentPagePersistConfig = {
     key: 'currentPage',
     storage,
@@ -26,7 +30,7 @@ const currentPagePersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    users: usersReducer,
+    users: persistReducer(usersPersistConfig,usersReducer) ,
     currentPage: persistReducer(currentPagePersistConfig, currentPageReducer),
     follow: persistReducer(followPersistConfig, followReducer),
      
