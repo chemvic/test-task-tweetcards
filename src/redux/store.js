@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {followReducer} from "./following/followSlice";
 import {usersReducer} from "./users/usersSlice";
-import {currentPageReducer} from "./currentPage/currentPageSlice";
+import {currentLimitReducer} from "./currentLimit/currentLimitSlice";
 import {
     persistStore,
     persistReducer,
@@ -19,19 +19,20 @@ const followPersistConfig = {
     key: 'follow',
     storage,
 };
-const usersPersistConfig = {
-    key: 'users',
-    storage,
-};
-const currentPagePersistConfig = {
-    key: 'currentPage',
+// const usersPersistConfig = {
+//     key: 'users',
+//     storage,
+// };
+const currentLimitPersistConfig = {
+    key: 'currentLimit',
     storage,
 };
 
 export const store = configureStore({
   reducer: {
-    users: persistReducer(usersPersistConfig,usersReducer) ,
-    currentPage: persistReducer(currentPagePersistConfig, currentPageReducer),
+    // users: persistReducer(usersPersistConfig,usersReducer) ,
+    users: usersReducer,
+    currentLimit: persistReducer(currentLimitPersistConfig, currentLimitReducer),
     follow: persistReducer(followPersistConfig, followReducer),
      
 

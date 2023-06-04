@@ -1,15 +1,15 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
+ const baseURL = "https://64635cbe4dca1a66135b925a.mockapi.io";
 
 
-
-export const fetchUsers = createAsyncThunk("users/fetchAll", async (currentPage=1, thunkAPI) => {
+export const fetchUsers = createAsyncThunk("users/fetchAll", async (currentLimit, thunkAPI) => {
   try {
-    
-    const baseURL = "https://64635cbe4dca1a66135b925a.mockapi.io";
+  
+     
 
-    const url =`${baseURL}/users?page=${currentPage}&limit=3`;
+    const url =`${baseURL}/users?page=1&limit=${currentLimit}`;
 
 
      const response = await axios.get(url);
@@ -19,9 +19,11 @@ export const fetchUsers = createAsyncThunk("users/fetchAll", async (currentPage=
   } 
 });
 
-export const updateUser = createAsyncThunk("users/updateUser ", async (user, thunkAPI) => {
+export const updateUser = createAsyncThunk("users/updateUser ", async (id, newData, thunkAPI) => {
   try {
-     const response = await axios.patch(`/users/${user.id}`);
+  
+    const url =`${baseURL}/users/${id}`;
+     const response = await axios.patch(url, newData);
       return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

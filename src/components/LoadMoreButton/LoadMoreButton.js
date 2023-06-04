@@ -1,11 +1,11 @@
 import css from './LoadMoreButton.module.css';
 import {  useDispatch  } from 'react-redux';
-import {incrementPage} from 'redux/currentPage/currentPageSlice';
+import {incrementLimit} from 'redux/currentLimit/currentLimitSlice';
 const LoadMoreButton =()=>{
 const dispatch = useDispatch();
 
 const handleIncrement=()=>{
-    dispatch(incrementPage());
+    dispatch(incrementLimit());
 }
 
     return(

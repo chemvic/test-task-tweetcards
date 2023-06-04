@@ -3,6 +3,7 @@ import {fetchUsers, updateUser} from "redux/users/operations";
 
 const initialState={     
       items: [],
+      isFollowed:false,
       isLoading: false,
       error: null
   };
@@ -23,17 +24,14 @@ const usersSlice = createSlice({
       .addCase(fetchUsers.pending, handlePending)
       .addCase(fetchUsers.fulfilled, (state, action)=>{
         state.isLoading=false;
-        state.items=[...state.items,...action.payload];
+        state.items=action.payload;
         state.error=null;
       })
       .addCase(updateUser.rejected, handleRejected)
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action)=>{
         state.isLoading=false;
-        const index = state.items.findIndex(
-          contact => contact.id === action.payload.id
-        );
-        state.items.splice(index, 1);
+        state.items.push(action.payload)
         state.error=null;
       })  
     }

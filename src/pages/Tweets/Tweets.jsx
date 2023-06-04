@@ -9,6 +9,7 @@ import {store} from "redux/store.js";
 
 import { useEffect } from "react";
 import { fetchUsers } from "redux/users/operations";
+import { resetLimit } from "redux/currentLimit/currentLimitSlice";
 import { selectUsers, selectIsLoading, selectError } from 'redux/users/selectors';
 
 const Tweets = () => {
@@ -19,13 +20,15 @@ const dispatch= useDispatch();
      const isLoading = useSelector(selectIsLoading);   
      const error = useSelector(selectError);
      const state = store.getState();
-     const page=state.currentPage.page;
+     const limit=state.currentLimit.limit;
 
      useEffect(() => {
            
-      dispatch(fetchUsers(page));
+      dispatch(fetchUsers(limit));
      
-     }, [dispatch, page]);
+     }, [dispatch, limit]);
+
+
 
   
  
@@ -39,14 +42,17 @@ const dispatch= useDispatch();
                 avatar,
                 followers,
                 tweets}) => (
-       <Card key={id} user={user} avatar={avatar} followers={followers}
+                    <li key={id} className={css.users_item}>
+                          <Card  user={user} avatar={avatar} followers={followers}
        tweets={tweets}
         id={id}/>
+                    </li>
+      
              ))}
         </ul>
 
-        <Link to="/" className={css.backBtn}>Back</Link>
-        <LoadMoreButton/>
+        <Link to="/" className={css.backBtn} onClick={() => { dispatch(resetLimit()) }}>Back</Link>
+        {limit>0&&limit<12&&<LoadMoreButton/>}
     </div>
       
     );
