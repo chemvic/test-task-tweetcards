@@ -31,7 +31,7 @@ const usersSlice = createSlice({
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action)=>{
         state.isLoading=false;
-        state.items.push(action.payload)
+        // state.items.push(action.payload)
         state.error=null;
       })  
     }

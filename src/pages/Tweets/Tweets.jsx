@@ -4,7 +4,7 @@ import LoadMoreButton from 'components/LoadMoreButton';
 import Loader from 'components/Loader/Loader';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
-import {store} from "redux/store.js";
+import { store } from "redux/store.js";
 
 
 import { useEffect } from "react";
@@ -36,7 +36,7 @@ const dispatch= useDispatch();
 
 {isLoading && !error && <Loader visible={true}/>}
           <ul className={css.users}>
-        {users
+       { users.length>0 && users
              .map(({  user,
                 id,
                 avatar,
@@ -51,8 +51,12 @@ const dispatch= useDispatch();
              ))}
         </ul>
 
-        <Link to="/" className={css.backBtn} onClick={() => { dispatch(resetLimit()) }}>Back</Link>
+        <div className={css.buttons}>
+           <Link to="/" className={css.button} onClick={() => { dispatch(resetLimit()) }}>Back</Link>
         {limit>0&&limit<12&&<LoadMoreButton/>}
+        </div>
+
+       
     </div>
       
     );
