@@ -37,14 +37,14 @@ import css from './Card.module.css';
         const handleClick = () => {
       
             dispatch(toggleFollow(id));
-            dispatch(updateUser(id, {
+        //     dispatch(updateUser(id, {
                 
-                followers:700,
-                isFollowed: true,
+        //         followers:700,
+        //         isFollowed: true,
               
-        }));
+        // }));
            
-            // dispatch(changeFollowers({ id, followers:followers + (followed ? -1 : 1) }));
+            dispatch(changeFollowers({ id, followers:followers + (followed ? -1 : 1) }));
                 
           };
         
