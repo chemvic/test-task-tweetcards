@@ -52,7 +52,7 @@ const dispatch= useDispatch();
         </ul>
 
         <div className={css.buttons}>
-           <Link to="/" className={css.button} onClick={() => { dispatch(resetLimit()) }}>Back</Link>
+           <Link to="/" className={css.button} onClick={() => { dispatch(resetLimit()) }}>Back home</Link>
         {limit>0&&limit<12&&<LoadMoreButton/>}
         </div>
 

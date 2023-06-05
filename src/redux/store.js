@@ -30,7 +30,6 @@ const currentLimitPersistConfig = {
 
 export const store = configureStore({
   reducer: {
-    // users: persistReducer(usersPersistConfig,usersReducer) ,
     users: usersReducer,
     currentLimit: persistReducer(currentLimitPersistConfig, currentLimitReducer),
     follow: persistReducer(followPersistConfig, followReducer),

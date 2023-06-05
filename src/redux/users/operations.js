@@ -19,13 +19,12 @@ export const fetchUsers = createAsyncThunk("users/fetchAll", async (currentLimit
   } 
 });
 
-export const updateUser = createAsyncThunk("users/updateUser ", async (id, newData, thunkAPI) => {
+export const updateUser = createAsyncThunk("users/updateUser ", async ({id,updatedFollowers,updatedIsFollowed }, thunkAPI) => {
 
   try {
 
     const url =`${baseURL}/users/${id}`;
-     const response = await axios.put(url, newData);
-     console.log(response);
+     const response = await axios.put(url, {followers:updatedFollowers,isFollowed:updatedIsFollowed });
       return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
