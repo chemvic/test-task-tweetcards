@@ -3,6 +3,7 @@ import {toggleFollow} from 'redux/following/followSlice';
 import { updateUser } from 'redux/users/operations';
 // import {selectIsFollowed} from 'redux/following/selectors';
 import { useSelector, useDispatch  } from 'react-redux';
+import { changeFollowers } from 'redux/users/usersSlice';
 import css from './Card.module.css';
 
  const Card = ({
@@ -11,34 +12,40 @@ import css from './Card.module.css';
     avatar,
     followers,
     tweets,
+    isFollowed
     }) => {
         const dispatch=useDispatch();
-        const isFollowed=useSelector((state) => state.follow[id]);
+        const followed=useSelector((state) => state.follow[id]);
 
         let newData={};
 
         if(!isFollowed){
              newData={
                 
-                    followers: followers+1,
-                    followed: true,
+                    followers:700,
+                    isFollowed: true,
                   
             }
         }else{
             newData={
                 
-                    followers: followers-1,
-                    followed: false,
+                    followers:700,
+                    isFollowed: false,
             
         }}
     
         const handleClick = () => {
-            console.log(followers);
-            console.log(newData);
+      
             dispatch(toggleFollow(id));
-            dispatch(updateUser(id, newData));
-            console.log('после',newData);
-            console.log('после', followers);
+            dispatch(updateUser(id, {
+                
+                followers:700,
+                isFollowed: true,
+              
+        }));
+           
+            // dispatch(changeFollowers({ id, followers:followers + (followed ? -1 : 1) }));
+                
           };
         
     return (
@@ -51,8 +58,8 @@ import css from './Card.module.css';
     />
     <p className={css.name}>{tweets} tweets</p>
     <p className={css.followers}>{followers} followers</p>
-    <button className='button' onClick={()=>{handleClick()}} style={{ backgroundColor: isFollowed ? '#5CD3A8' : '#EBD8FF' }}>
-        {isFollowed ? 'Following' : 'Follow'}
+    <button className='button' onClick={()=>{handleClick(id)}} style={{ backgroundColor: followed ? '#5CD3A8' : '#EBD8FF' }}>
+        {followed ? 'Following' : 'Follow'}
       </button>
 
 </div>

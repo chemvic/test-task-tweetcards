@@ -20,10 +20,12 @@ export const fetchUsers = createAsyncThunk("users/fetchAll", async (currentLimit
 });
 
 export const updateUser = createAsyncThunk("users/updateUser ", async (id, newData, thunkAPI) => {
+
   try {
-  
+
     const url =`${baseURL}/users/${id}`;
      const response = await axios.put(url, newData);
+     console.log(response);
       return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);

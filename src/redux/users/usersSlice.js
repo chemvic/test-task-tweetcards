@@ -18,7 +18,16 @@ const initialState={
 
 const usersSlice = createSlice({
     name: 'users',
-    initialState, 
+    initialState,
+    reducers: {
+        changeFollowers(state, action) {
+          const { id, followers } = action.payload;
+          const index = state.items.findIndex((user) => user.id === id);
+          if (index !== -1) {
+            state.items[index].followers = followers;
+          }
+        },
+      }, 
     extraReducers: (builder) =>{
       builder
       .addCase(fetchUsers.pending, handlePending)
@@ -31,10 +40,13 @@ const usersSlice = createSlice({
       .addCase(updateUser.pending, handlePending)
       .addCase(updateUser.fulfilled, (state, action)=>{
         state.isLoading=false;
-        // state.items.push(action.payload)
+        const index = state.items.findIndex((user) => user.id === action.meta.arg);
+        if (index !== -1) {
+          state.items[index] = action.payload;
+        }
         state.error=null;
       })  
     }
   });
-
+  export const { changeFollowers } = usersSlice.actions;
 export const usersReducer = usersSlice.reducer;

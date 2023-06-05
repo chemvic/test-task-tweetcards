@@ -41,11 +41,11 @@ const dispatch= useDispatch();
                 id,
                 avatar,
                 followers,
-                tweets}) => (
+                tweets,isFollowed }) => (
                     <li key={id} className={css.users_item}>
                           <Card  user={user} avatar={avatar} followers={followers}
        tweets={tweets}
-        id={id}/>
+        id={id} isFollowed={isFollowed}/>
                     </li>
       
              ))}
