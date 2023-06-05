@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktest_task_tweetcards=self.webpackChunktest_task_tweetcards||[]).push([[871],{7871:function(t,e,s){s.r(e),s.d(e,{default:function(){return c}});var n="NotFound_message__cxOxd",a=s(3329),c=function(){return(0,a.jsx)("div",{className:n,children:(0,a.jsx)("h1",{children:"Page on this path not found"})})}}}]);
+//# sourceMappingURL=871.67cc39d7.chunk.js.map
